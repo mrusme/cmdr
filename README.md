@@ -1,7 +1,7 @@
 cmdr
 ----
 
-A minimalistic single-binary tool that can be used as Docker ENTRYPOINT to run multiple commands simultaneously.
+A minimalistic, zero-configuration, single-binary tool built in Rust that runs multiple commands simultaneously and can be used as Docker `ENTRYPOINT`.
 
 ## Installation
 
