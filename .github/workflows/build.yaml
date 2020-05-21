@@ -21,7 +21,7 @@ jobs:
           tar czf cmdr-x86_64-alpine.tar.gz cmdr-x86_64-alpine
 
       - name: Upload alpine version
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2-preview
         with:
           name: cmdr-x86_64-alpine.tar.gz
           path: cmdr-x86_64-alpine.tar.gz
