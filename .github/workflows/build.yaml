@@ -15,10 +15,14 @@ jobs:
       - name: Build alpine version
         run: |
           docker build . --file Dockerfile --target build_alpine --tag build_alpine
-          docker cp build_alpine:latest:/build/target/release/cmdr cmdr-x86_64-alpine
+          docker run -d --rm --name build build_alpine:latest /bin/sleep 60
+          docker cp build:/build/target/release/cmdr cmdr-x86_64-alpine
+          docker stop -t 1 build
 
       - name: Upload alpine version
         uses: actions/upload-artifact@v1
         with:
           name: cmdr-x86_64-alpine
           path: cmdr-x86_64-alpine
+
+# TODO: https://github.com/marketplace/actions/github-upload-release-artifacts

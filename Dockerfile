@@ -4,3 +4,5 @@ WORKDIR /build
 ADD . .
 
 RUN cargo build --release
+
+CMD ["/bin/sh"]
