@@ -18,11 +18,12 @@ jobs:
           docker run -d --rm --name build build_alpine:latest /bin/sleep 60
           docker cp build:/build/target/release/cmdr cmdr-x86_64-alpine
           docker stop -t 1 build
+          tar czf cmdr-x86_64-alpine.tar.gz cmdr-x86_64-alpine
 
       - name: Upload alpine version
         uses: actions/upload-artifact@v1
         with:
-          name: cmdr-x86_64-alpine
-          path: cmdr-x86_64-alpine
+          name: cmdr-x86_64-alpine.tar.gz
+          path: cmdr-x86_64-alpine.tar.gz
 
 # TODO: https://github.com/marketplace/actions/github-upload-release-artifacts
