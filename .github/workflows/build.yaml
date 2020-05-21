@@ -1,0 +1,24 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build alpine version
+        run: |
+          docker build . --file Dockerfile --target build_alpine --tag build_alpine
+          docker cp build_alpine:latest:/build/target/release/cmdr cmdr-x86_64-alpine
+
+      - name: Upload alpine version
+        uses: actions/upload-artifact@v1
+        with:
+          name: cmdr-x86_64-alpine
+          path: cmdr-x86_64-alpine
